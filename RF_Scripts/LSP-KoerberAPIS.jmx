@@ -1,0 +1,2182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.4.3">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group" enabled="false">
+        <stringProp name="ThreadGroup.on_sample_error">stopthread</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Logon_LabelPrinting" enabled="false">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+  &quot;userLogOnName&quot;: &quot;SVCBARKSC01&quot;,&#xd;
+  &quot;userPassword&quot;: &quot;7PFnJNZniKDv0fEysZGFYDLepUBsKp&quot;&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">appsrv1dev1bar.kscnp-nprd.iaas.js-alz.com</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/Bartender/API/IntegrationServicePassthrough?targetURL=/Integration/LabelWebServiceIntegration_JSON_Multi_Page/Execute</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
+            <stringProp name="JSONPostProcessor.referenceNames">AuthenticationTicket</stringProp>
+            <stringProp name="JSONPostProcessor.jsonPathExprs">$..SerializedAuthenticationTicket</stringProp>
+            <stringProp name="JSONPostProcessor.match_numbers">0</stringProp>
+          </JSONPostProcessor>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Logon" enabled="false">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+  &quot;applicationId&quot;: &quot;HighJump One Platform&quot;,&#xd;
+  &quot;tenant&quot;: &quot;&quot;,&#xd;
+  &quot;userLogOnName&quot;: &quot;TCSJSON&quot;,&#xd;
+  &quot;userPassword&quot;: &quot;2021&quot;,&#xd;
+  &quot;connectionType&quot;: &quot;Integration&quot;&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">iissrv0lfcsyst.kscnp-nprd.iaas.js-alz.com</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/odata/LogOn</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
+            <stringProp name="JSONPostProcessor.referenceNames">AuthenticationTicket</stringProp>
+            <stringProp name="JSONPostProcessor.jsonPathExprs">$..SerializedAuthenticationTicket</stringProp>
+            <stringProp name="JSONPostProcessor.match_numbers">0</stringProp>
+          </JSONPostProcessor>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Logon_VNP" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+  &quot;applicationId&quot;: &quot;HighJump One Platform&quot;,&#xd;
+  &quot;tenant&quot;: &quot;&quot;,&#xd;
+  &quot;userLogOnName&quot;: &quot;TCSJSON&quot;,&#xd;
+  &quot;userPassword&quot;: &quot;2021&quot;,&#xd;
+  &quot;connectionType&quot;: &quot;Integration&quot;&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">applbha.kscnp-nprd.iaas.js-alz.com</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/odata/LogOn</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
+            <stringProp name="JSONPostProcessor.referenceNames">AuthenticationTicket</stringProp>
+            <stringProp name="JSONPostProcessor.jsonPathExprs">$..SerializedAuthenticationTicket</stringProp>
+            <stringProp name="JSONPostProcessor.match_numbers">0</stringProp>
+          </JSONPostProcessor>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CreateOrder_VNP" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+&quot;params&quot;: {&#xd;
+&quot;json&quot;: {&#xd;
+&quot;po_master&quot;:{&#xd;
+&quot;transaction_code&quot;: &quot;NEW&quot;,&#xd;
+  &quot;wh_id&quot;: &quot;4qvkih&quot;,&#xd;
+  &quot;order_number&quot;: &quot;204916&quot;,&#xd;
+  &quot;display_order_number&quot;: &quot;6444131342&quot;,&#xd;
+  &quot;status&quot;: &quot;&quot;,&#xd;
+  &quot;host_group_id&quot;: null,&#xd;
+  &quot;store_order_number&quot;: &quot;204916&quot;,&#xd;
+  &quot;order_type&quot;: &quot;CLICKNCOLLECT&quot;,&#xd;
+  &quot;customer_code&quot;: &quot;p42jte&quot;,&#xd;
+  &quot;customer_po_number&quot;: null,&#xd;
+  &quot;department&quot;: null,&#xd;
+  &quot;load_id&quot;: null,&#xd;
+  &quot;bol_number&quot;: null,&#xd;
+  &quot;master_bol_number&quot;: null,&#xd;
+  &quot;pro_number&quot;: null,&#xd;
+  &quot;carrier&quot;: &quot;Sainsburys&quot;,&#xd;
+  &quot;carrier_scac&quot;: null,&#xd;
+  &quot;freight_terms&quot;: null,&#xd;
+  &quot;rush&quot;: null,&#xd;
+  &quot;order_date&quot;: &quot;20/01/2022&quot;,&#xd;
+  &quot;arrive_date&quot;: &quot;20/01/2022&quot;,&#xd;
+  &quot;date_expected&quot;: &quot;27/01/2022&quot;,&#xd;
+  &quot;promised_date&quot;: &quot;20/01/2022&quot;,&#xd;
+  &quot;weight&quot;: null,&#xd;
+  &quot;cubic_volume&quot;: null,&#xd;
+  &quot;containers&quot;: null,&#xd;
+  &quot;backorder&quot;: null,&#xd;
+  &quot;pre_paid&quot;: null,&#xd;
+  &quot;cod_amount&quot;: null,&#xd;
+  &quot;insurance_amount&quot;: null,&#xd;
+  &quot;pip_amount&quot;: null,&#xd;
+  &quot;freight_cost&quot;: null,&#xd;
+  &quot;ship_to_code&quot;: &quot;202201200321091909553962&quot;,&#xd;
+  &quot;ship_to_name&quot;: null,&#xd;
+  &quot;ship_to_addr1&quot;: null,&#xd;
+  &quot;ship_to_addr2&quot;: null,&#xd;
+  &quot;ship_to_addr3&quot;: null,&#xd;
+  &quot;ship_to_city&quot;: null,&#xd;
+  &quot;ship_to_state&quot;: null,&#xd;
+  &quot;ship_to_zip&quot;: &quot;&quot;,&#xd;
+  &quot;ship_to_country_code&quot;: null,&#xd;
+  &quot;ship_to_country_name&quot;: null,&#xd;
+  &quot;ship_to_phone&quot;: null,&#xd;
+  &quot;ship_to_ein&quot;: null,&#xd;
+  &quot;bill_to_code&quot;: null,&#xd;
+  &quot;bill_to_name&quot;: null,&#xd;
+  &quot;bill_to_addr1&quot;: null,&#xd;
+  &quot;bill_to_addr2&quot;: null,&#xd;
+  &quot;bill_to_addr3&quot;: null,&#xd;
+  &quot;bill_to_city&quot;: null,&#xd;
+  &quot;bill_to_state&quot;: null,&#xd;
+  &quot;bill_to_zip&quot;: null,&#xd;
+  &quot;bill_to_country_code&quot;: null,&#xd;
+  &quot;bill_to_country_name&quot;: null,&#xd;
+  &quot;bill_to_phone&quot;: null,&#xd;
+  &quot;delivery_name&quot;: null,&#xd;
+  &quot;delivery_addr1&quot;: null,&#xd;
+  &quot;delivery_addr2&quot;: null,&#xd;
+  &quot;delivery_addr3&quot;: null,&#xd;
+  &quot;delivery_city&quot;: null,&#xd;
+  &quot;delivery_state&quot;: null,&#xd;
+  &quot;delivery_zip&quot;: null,&#xd;
+  &quot;delivery_country_code&quot;: null,&#xd;
+  &quot;delivery_country_name&quot;: null,&#xd;
+  &quot;delivery_phone&quot;: null,&#xd;
+  &quot;bill_frght_to_code&quot;: null,&#xd;
+  &quot;bill_frght_to_name&quot;: null,&#xd;
+  &quot;bill_frght_to_addr1&quot;: null,&#xd;
+  &quot;bill_frght_to_addr2&quot;: null,&#xd;
+  &quot;bill_frght_to_addr3&quot;: null,&#xd;
+  &quot;bill_frght_to_city&quot;: null,&#xd;
+  &quot;bill_frght_to_state&quot;: null,&#xd;
+  &quot;bill_frght_to_zip&quot;: null,&#xd;
+  &quot;bill_frght_to_country_code&quot;: null,&#xd;
+  &quot;bill_frght_to_country_name&quot;: null,&#xd;
+  &quot;bill_frght_to_phone&quot;: null,&#xd;
+  &quot;carton_label&quot;: null,&#xd;
+  &quot;partial_order_flag&quot;: null,&#xd;
+  &quot;earliest_ship_date&quot;: &quot;20/01/2022&quot;,&#xd;
+  &quot;latest_ship_date&quot;: &quot;27/01/2022&quot;,&#xd;
+  &quot;earliest_delivery_date&quot;: &quot;20/01/2022&quot;,&#xd;
+  &quot;latest_delivery_date&quot;: &quot;27/01/2022&quot;,&#xd;
+  &quot;temp_link_id&quot;: null,&#xd;
+  &quot;service_level&quot;: null,&#xd;
+  &quot;ship_via&quot;: null,&#xd;
+  &quot;ship_to_attention&quot;: null,&#xd;
+  &quot;sat_delivery_flag&quot;: null,&#xd;
+  &quot;registered_mail_flag&quot;: null,&#xd;
+  &quot;restricted_mail_flag&quot;: null,&#xd;
+  &quot;cod_flag&quot;: null,&#xd;
+  &quot;cod_pay_type&quot;: null,&#xd;
+  &quot;cod_option&quot;: null,&#xd;
+  &quot;insurance_flag&quot;: null,&#xd;
+  &quot;bill_frght_to_attention&quot;: null,&#xd;
+  &quot;ship_to_residential_flag&quot;: null,&#xd;
+  &quot;carrier_mode&quot;: null,&#xd;
+  &quot;earliest_appt_time&quot;: &quot;16:00&quot;,&#xd;
+  &quot;latest_appt_time&quot;: &quot;23:59&quot;,&#xd;
+  &quot;closure_date&quot;: null,&#xd;
+  &quot;order_details&quot;: [&#xd;
+    {&#xd;
+      &quot;client_code&quot;: &quot;Argos&quot;,&#xd;
+      &quot;line_number&quot;: &quot;1&quot;,&#xd;
+      &quot;item_number&quot;: &quot;rdcdcsbh&quot;,&#xd;
+      &quot;item_description&quot;: null,&#xd;
+      &quot;cust_part&quot;: null,&#xd;
+      &quot;lot_number&quot;: null,&#xd;
+      &quot;qty&quot;: 1,&#xd;
+      &quot;status&quot;: null,&#xd;
+      &quot;unit_weight&quot;: null,&#xd;
+      &quot;unit_volume&quot;: null,&#xd;
+      &quot;extended_weight&quot;: null,&#xd;
+      &quot;extended_volume&quot;: null,&#xd;
+      &quot;haz_material&quot;: null,&#xd;
+      &quot;bol_class&quot;: null,&#xd;
+      &quot;bol_code&quot;: null,&#xd;
+      &quot;order_uom&quot;: &quot;EA&quot;,&#xd;
+      &quot;host_wave_id&quot;: null,&#xd;
+      &quot;temp_link_id&quot;: null,&#xd;
+      &quot;unit_insurance_amount&quot;: null,&#xd;
+      &quot;gen_attribute_value1&quot;: null,&#xd;
+      &quot;gen_attribute_value2&quot;: null,&#xd;
+      &quot;gen_attribute_value3&quot;: null,&#xd;
+      &quot;gen_attribute_value4&quot;: null,&#xd;
+      &quot;gen_attribute_value5&quot;: null,&#xd;
+      &quot;gen_attribute_value6&quot;: null,&#xd;
+      &quot;gen_attribute_value7&quot;: null,&#xd;
+      &quot;gen_attribute_value8&quot;: null,&#xd;
+      &quot;gen_attribute_value9&quot;: null,&#xd;
+      &quot;gen_attribute_value10&quot;: null,&#xd;
+      &quot;gen_attribute_value11&quot;: null,&#xd;
+      &quot;hold_reason_id&quot;: null,&#xd;
+      &quot;processing_satt_id&quot;: null&#xd;
+    }&#xd;
+  ]&#xd;
+}&#xd;
+}&#xd;
+},&#xd;
+&quot;method&quot;: &quot;usp_js_import_po&quot;&#xd;
+}&#xd;
+&#xd;
+</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">ksc-iis-tst.stbc2.jstest2.net</stringProp>
+          <stringProp name="HTTPSampler.port">8080</stringProp>
+          <stringProp name="HTTPSampler.protocol">http</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/api/warehouseadvantage</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">AuthenticationTicket</stringProp>
+                <stringProp name="Header.value">${AuthenticationTicket}</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
+            <stringProp name="delimiter"></stringProp>
+            <stringProp name="fileEncoding"></stringProp>
+            <stringProp name="filename">C:/Users/Bishnupriya.Nanda/OneDrive - Sainsbury&apos;s Supermarkets Ltd/Documents/orders.csv</stringProp>
+            <boolProp name="ignoreFirstLine">false</boolProp>
+            <boolProp name="quotedData">false</boolProp>
+            <boolProp name="recycle">true</boolProp>
+            <stringProp name="shareMode">shareMode.all</stringProp>
+            <boolProp name="stopThread">false</boolProp>
+            <stringProp name="variableNames">Orders</stringProp>
+          </CSVDataSet>
+          <hashTree/>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+            <stringProp name="ConstantTimer.delay">5000</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="warehouseAdvantage-Vendor" enabled="false">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+&quot;params&quot;: {&#xd;
+&quot;json&quot;: {&#xd;
+&quot;vendors&quot;: {&#xd;
+&quot;transaction_code&quot;: &quot;UPDATE&quot;,&#xd;
+&quot;host_group_id&quot;: &quot;${vendor}&quot;,&#xd;
+&quot;vendor_code&quot;: &quot;RIANDCO123&quot;,&#xd;
+&quot;vendor_name&quot;: &quot;RIANDCO&quot;,&#xd;
+&quot;account_phone_number&quot;: &quot;1234567890&quot;,&#xd;
+&quot;contact_name&quot;: &quot;Richard Ife&quot;,&#xd;
+&quot;contact_phone_number&quot;: &quot;1234567890&quot;,&#xd;
+&quot;address_line_1&quot;: &quot; 30 xyz road&quot;,&#xd;
+&quot;address_line_2&quot;: &quot; abcd efg&quot;,&#xd;
+&quot;city&quot;: &quot;pune&quot;,&#xd;
+&quot;state&quot;: &quot;ABC&quot;,&#xd;
+&quot;zip_code&quot;: &quot;12345&quot;,&#xd;
+&quot;country&quot;: &quot;USA&quot;,&#xd;
+&quot;audit_percent&quot;: 5,&#xd;
+&quot;vendor_type&quot;: &quot;WAREHOUSE&quot;,&#xd;
+&quot;vendor_legacy_code&quot;: &quot;12345678&quot;&#xd;
+}&#xd;
+}&#xd;
+},&#xd;
+&quot;method&quot;: &quot;usp_js_import_vendor&quot;&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">ksc-iis-tst.stbc2.jstest2.net</stringProp>
+          <stringProp name="HTTPSampler.port">8080</stringProp>
+          <stringProp name="HTTPSampler.protocol">http</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/api/warehouseadvantage</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">AuthenticationTicket</stringProp>
+                <stringProp name="Header.value">${AuthenticationTicket}</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
+            <stringProp name="delimiter"></stringProp>
+            <stringProp name="fileEncoding"></stringProp>
+            <stringProp name="filename">C:/Ajith/Script/API/vendor.csv</stringProp>
+            <boolProp name="ignoreFirstLine">false</boolProp>
+            <boolProp name="quotedData">false</boolProp>
+            <boolProp name="recycle">true</boolProp>
+            <stringProp name="shareMode">shareMode.all</stringProp>
+            <boolProp name="stopThread">false</boolProp>
+            <stringProp name="variableNames">vendor</stringProp>
+          </CSVDataSet>
+          <hashTree/>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+            <stringProp name="ConstantTimer.delay">5000</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="warehouseAdvantage-ASN" enabled="false">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+&quot;params&quot;: {&#xd;
+&quot;json&quot;: {&#xd;
+&quot;asn_master&quot;: {&#xd;
+&quot;transaction_code&quot;: &quot;UPDATE&quot;,&#xd;
+&quot;host_group_id&quot;: &quot;SMd7b356-42d2-4a82-bd8c-e1b2f1618d14BB&quot;,&#xd;
+&quot;wh_id&quot;: &quot;2923&quot;,&#xd;
+&quot;asn_number&quot;: &quot;3966558&quot;,&#xd;
+&quot;vendor_code&quot;: &quot;wwyujp&quot;,&#xd;
+&quot;status&quot;: &quot;O&quot;,&#xd;
+&quot;delivery_date&quot;: &quot;2022-01-25&quot;,&#xd;
+&quot;trailer_number&quot;: &quot;T111&quot;,&#xd;
+&quot;seal_id&quot;: &quot;&quot;,&#xd;
+&quot;carrier_scac&quot;: &quot;Sainsburys&quot;,&#xd;
+&quot;carrier_code&quot;: &quot;Argos&quot;,&#xd;
+&quot;asn_detail&quot;: [&#xd;
+{&#xd;
+&quot;asn_number&quot;: &quot;3966558&quot;,&#xd;
+&quot;client_code&quot;: &quot;ARGOS&quot;,&#xd;
+&quot;asn_line_number&quot;: &quot;1&quot;,&#xd;
+&quot;item_number&quot;: &quot;b61b1pkr-1&quot;,&#xd;
+&quot;parent_hu_id&quot;: &quot;5588785&quot;,&#xd;
+&quot;hu_id&quot;: &quot;614919&quot;,&#xd;
+&quot;lot_number&quot;: &quot;&quot;,&#xd;
+&quot;quantity&quot;: 48.0,&#xd;
+&quot;po_line_number&quot;: &quot;1&quot;,&#xd;
+&quot;po_number&quot;: &quot;LSP-Argos-2103012022&quot;,&#xd;
+&quot;customer_special_order_quantity&quot;: 48.0&#xd;
+}&#xd;
+]&#xd;
+}&#xd;
+}&#xd;
+},&#xd;
+&quot;method&quot;: &quot;usp_js_import_asn&quot;&#xd;
+}&#xd;
+&#xd;
+</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">ksc-iis-tst.stbc2.jstest2.net</stringProp>
+          <stringProp name="HTTPSampler.port">8080</stringProp>
+          <stringProp name="HTTPSampler.protocol">http</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/api/warehouseadvantage</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">AuthenticationTicket</stringProp>
+                <stringProp name="Header.value">${AuthenticationTicket}</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="false">
+            <stringProp name="delimiter"></stringProp>
+            <stringProp name="fileEncoding"></stringProp>
+            <stringProp name="filename">C:/Users/Bishnupriya.Nanda/OneDrive - Sainsbury&apos;s Supermarkets Ltd/Documents/vendor.txt</stringProp>
+            <boolProp name="ignoreFirstLine">false</boolProp>
+            <boolProp name="quotedData">false</boolProp>
+            <boolProp name="recycle">true</boolProp>
+            <stringProp name="shareMode">shareMode.all</stringProp>
+            <boolProp name="stopThread">false</boolProp>
+            <stringProp name="variableNames">vendor</stringProp>
+          </CSVDataSet>
+          <hashTree/>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+            <stringProp name="ConstantTimer.delay">5000</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="warehouseAdvantage-Item" enabled="false">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+&quot;params&quot;: {&#xd;
+&quot;json&quot;: {&#xd;
+&quot;items&quot;: {&#xd;
+&quot;transaction_code&quot;: &quot;UPDATE&quot;,&#xd;
+&quot;host_group_id&quot;: &quot;${item}&quot;,&#xd;
+&quot;client_code&quot;: &quot;ARGOS&quot;,&#xd;
+&quot;item_number&quot;: &quot;3anm7zhj-1&quot;,&#xd;
+&quot;display_item_number&quot;: &quot;9585289&quot;,&#xd;
+&quot;description&quot;: &quot;Brush Stroke Ceramic Table Lamp&quot;,&#xd;
+&quot;uom&quot;: &quot;EA&quot;,&#xd;
+&quot;inventory_type&quot;: &quot;AMB&quot;,&#xd;
+&quot;lot_control&quot;: &quot;N&quot;,&#xd;
+&quot;unit_weight&quot;: 4.059652,&#xd;
+&quot;unit_volume&quot;: 75.813484,&#xd;
+&quot;haz_material&quot;: &quot;N&quot;,&#xd;
+&quot;expiration_date_control&quot;: &quot;N&quot;,&#xd;
+&quot;item_uom&quot;: [&#xd;
+{&#xd;
+&quot;uom&quot;: &quot;EA&quot;,&#xd;
+&quot;conversion_factor&quot;: 1.0,&#xd;
+&quot;package_weight&quot;: 5.059652,&#xd;
+&quot;length&quot;: 5.0386,&#xd;
+&quot;width&quot;: 5.0386,&#xd;
+&quot;height&quot;: 5.6482,&#xd;
+&quot;shippable_uom&quot;: &quot;N&quot;&#xd;
+}&#xd;
+],&#xd;
+&quot;item_upc&quot;: [&#xd;
+{&#xd;
+&quot;upc&quot;: &quot;9585289&quot;,&#xd;
+&quot;upc_type&quot;: &quot;CATALOGUE_NUMBER&quot;&#xd;
+}&#xd;
+]&#xd;
+}&#xd;
+}&#xd;
+},&#xd;
+&quot;method&quot;: &quot;usp_js_import_items&quot;&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">ksc-iis-tst.stbc2.jstest2.net</stringProp>
+          <stringProp name="HTTPSampler.port">8080</stringProp>
+          <stringProp name="HTTPSampler.protocol">http</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/api/warehouseadvantage</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">AuthenticationTicket</stringProp>
+                <stringProp name="Header.value">${AuthenticationTicket}</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
+            <stringProp name="delimiter"></stringProp>
+            <stringProp name="fileEncoding"></stringProp>
+            <stringProp name="filename">C:/Users/Bishnupriya.Nanda/OneDrive - Sainsbury&apos;s Supermarkets Ltd/Documents/item.csv</stringProp>
+            <boolProp name="ignoreFirstLine">false</boolProp>
+            <boolProp name="quotedData">false</boolProp>
+            <boolProp name="recycle">true</boolProp>
+            <stringProp name="shareMode">shareMode.all</stringProp>
+            <boolProp name="stopThread">false</boolProp>
+            <stringProp name="variableNames">item</stringProp>
+          </CSVDataSet>
+          <hashTree/>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+            <stringProp name="ConstantTimer.delay">5000</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="warehouseAdvantage-PO" enabled="false">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+&quot;params&quot;: {&#xd;
+&quot;json&quot;: {&#xd;
+&quot;po_master&quot;: {&#xd;
+&quot;transaction_code&quot;: &quot;UPDATE&quot;,&#xd;
+&quot;host_group_id&quot;: &quot;${Orders}&quot;,&#xd;
+&quot;wh_id&quot;: &quot;2923&quot;,&#xd;
+&quot;client_code&quot;: &quot;ARGOS&quot;,&#xd;
+&quot;po_number&quot;: &quot;LSP-Argos-2112202102&quot;,&#xd;
+&quot;display_po_number&quot;: &quot;LSP-Argos-2112202102&quot;,&#xd;
+&quot;po_type&quot;: &quot;Purchase Orders&quot;,&#xd;
+&quot;vendor_code&quot;: &quot;wwyujp&quot;,&#xd;
+&quot;status&quot;: &quot;O&quot;,&#xd;
+&quot;po_detail&quot;: [&#xd;
+{&#xd;
+&quot;wh_id&quot;: &quot;2923&quot;,&#xd;
+&quot;client_code&quot;: &quot;ARGOS&quot;,&#xd;
+&quot;po_number&quot;: &quot;LSP-Argos-2112202102&quot;,&#xd;
+&quot;display_po_number&quot;: &quot;LSP-Argos-2112202102&quot;,&#xd;
+&quot;line_number&quot;: &quot;1&quot;,&#xd;
+&quot;item_number&quot;: &quot;09rgs0g5-1&quot;,&#xd;
+&quot;display_item_number&quot;: &quot;8198196&quot;,&#xd;
+&quot;quantity&quot;: 48,&#xd;
+&quot;vendor_item_number&quot;: &quot;8067&quot;,&#xd;
+&quot;delivery_date&quot;: &quot;2021-12-25&quot;,&#xd;
+&quot;order_uom&quot;: &quot;EA&quot;&#xd;
+}&#xd;
+]&#xd;
+}&#xd;
+}&#xd;
+},&#xd;
+&quot;method&quot;: &quot;usp_js_import_po&quot;&#xd;
+}&#xd;
+&#xd;
+</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">ksc-iis-tst.stbc2.jstest2.net</stringProp>
+          <stringProp name="HTTPSampler.port">8080</stringProp>
+          <stringProp name="HTTPSampler.protocol">http</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/api/warehouseadvantage</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">AuthenticationTicket</stringProp>
+                <stringProp name="Header.value">${AuthenticationTicket}</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
+            <stringProp name="delimiter"></stringProp>
+            <stringProp name="fileEncoding"></stringProp>
+            <stringProp name="filename">C:/Users/Bishnupriya.Nanda/OneDrive - Sainsbury&apos;s Supermarkets Ltd/Documents/orders.csv</stringProp>
+            <boolProp name="ignoreFirstLine">false</boolProp>
+            <boolProp name="quotedData">false</boolProp>
+            <boolProp name="recycle">true</boolProp>
+            <stringProp name="shareMode">shareMode.all</stringProp>
+            <boolProp name="stopThread">false</boolProp>
+            <stringProp name="variableNames">Orders</stringProp>
+          </CSVDataSet>
+          <hashTree/>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+            <stringProp name="ConstantTimer.delay">5000</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="warehouseAdvantage-CreateOrder" enabled="false">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+&quot;params&quot;: {&#xd;
+&quot;json&quot;: {&#xd;
+&quot;po_master&quot;:{&#xd;
+&quot;transaction_code&quot;: &quot;NEW&quot;,&#xd;
+  &quot;wh_id&quot;: &quot;4qvkih&quot;,&#xd;
+  &quot;order_number&quot;: &quot;204916&quot;,&#xd;
+  &quot;display_order_number&quot;: &quot;6444131342&quot;,&#xd;
+  &quot;status&quot;: &quot;&quot;,&#xd;
+  &quot;host_group_id&quot;: null,&#xd;
+  &quot;store_order_number&quot;: &quot;204916&quot;,&#xd;
+  &quot;order_type&quot;: &quot;CLICKNCOLLECT&quot;,&#xd;
+  &quot;customer_code&quot;: &quot;p42jte&quot;,&#xd;
+  &quot;customer_po_number&quot;: null,&#xd;
+  &quot;department&quot;: null,&#xd;
+  &quot;load_id&quot;: null,&#xd;
+  &quot;bol_number&quot;: null,&#xd;
+  &quot;master_bol_number&quot;: null,&#xd;
+  &quot;pro_number&quot;: null,&#xd;
+  &quot;carrier&quot;: &quot;Sainsburys&quot;,&#xd;
+  &quot;carrier_scac&quot;: null,&#xd;
+  &quot;freight_terms&quot;: null,&#xd;
+  &quot;rush&quot;: null,&#xd;
+  &quot;order_date&quot;: &quot;20/01/2022&quot;,&#xd;
+  &quot;arrive_date&quot;: &quot;20/01/2022&quot;,&#xd;
+  &quot;date_expected&quot;: &quot;27/01/2022&quot;,&#xd;
+  &quot;promised_date&quot;: &quot;20/01/2022&quot;,&#xd;
+  &quot;weight&quot;: null,&#xd;
+  &quot;cubic_volume&quot;: null,&#xd;
+  &quot;containers&quot;: null,&#xd;
+  &quot;backorder&quot;: null,&#xd;
+  &quot;pre_paid&quot;: null,&#xd;
+  &quot;cod_amount&quot;: null,&#xd;
+  &quot;insurance_amount&quot;: null,&#xd;
+  &quot;pip_amount&quot;: null,&#xd;
+  &quot;freight_cost&quot;: null,&#xd;
+  &quot;ship_to_code&quot;: &quot;202201200321091909553962&quot;,&#xd;
+  &quot;ship_to_name&quot;: null,&#xd;
+  &quot;ship_to_addr1&quot;: null,&#xd;
+  &quot;ship_to_addr2&quot;: null,&#xd;
+  &quot;ship_to_addr3&quot;: null,&#xd;
+  &quot;ship_to_city&quot;: null,&#xd;
+  &quot;ship_to_state&quot;: null,&#xd;
+  &quot;ship_to_zip&quot;: &quot;&quot;,&#xd;
+  &quot;ship_to_country_code&quot;: null,&#xd;
+  &quot;ship_to_country_name&quot;: null,&#xd;
+  &quot;ship_to_phone&quot;: null,&#xd;
+  &quot;ship_to_ein&quot;: null,&#xd;
+  &quot;bill_to_code&quot;: null,&#xd;
+  &quot;bill_to_name&quot;: null,&#xd;
+  &quot;bill_to_addr1&quot;: null,&#xd;
+  &quot;bill_to_addr2&quot;: null,&#xd;
+  &quot;bill_to_addr3&quot;: null,&#xd;
+  &quot;bill_to_city&quot;: null,&#xd;
+  &quot;bill_to_state&quot;: null,&#xd;
+  &quot;bill_to_zip&quot;: null,&#xd;
+  &quot;bill_to_country_code&quot;: null,&#xd;
+  &quot;bill_to_country_name&quot;: null,&#xd;
+  &quot;bill_to_phone&quot;: null,&#xd;
+  &quot;delivery_name&quot;: null,&#xd;
+  &quot;delivery_addr1&quot;: null,&#xd;
+  &quot;delivery_addr2&quot;: null,&#xd;
+  &quot;delivery_addr3&quot;: null,&#xd;
+  &quot;delivery_city&quot;: null,&#xd;
+  &quot;delivery_state&quot;: null,&#xd;
+  &quot;delivery_zip&quot;: null,&#xd;
+  &quot;delivery_country_code&quot;: null,&#xd;
+  &quot;delivery_country_name&quot;: null,&#xd;
+  &quot;delivery_phone&quot;: null,&#xd;
+  &quot;bill_frght_to_code&quot;: null,&#xd;
+  &quot;bill_frght_to_name&quot;: null,&#xd;
+  &quot;bill_frght_to_addr1&quot;: null,&#xd;
+  &quot;bill_frght_to_addr2&quot;: null,&#xd;
+  &quot;bill_frght_to_addr3&quot;: null,&#xd;
+  &quot;bill_frght_to_city&quot;: null,&#xd;
+  &quot;bill_frght_to_state&quot;: null,&#xd;
+  &quot;bill_frght_to_zip&quot;: null,&#xd;
+  &quot;bill_frght_to_country_code&quot;: null,&#xd;
+  &quot;bill_frght_to_country_name&quot;: null,&#xd;
+  &quot;bill_frght_to_phone&quot;: null,&#xd;
+  &quot;carton_label&quot;: null,&#xd;
+  &quot;partial_order_flag&quot;: null,&#xd;
+  &quot;earliest_ship_date&quot;: &quot;20/01/2022&quot;,&#xd;
+  &quot;latest_ship_date&quot;: &quot;27/01/2022&quot;,&#xd;
+  &quot;earliest_delivery_date&quot;: &quot;20/01/2022&quot;,&#xd;
+  &quot;latest_delivery_date&quot;: &quot;27/01/2022&quot;,&#xd;
+  &quot;temp_link_id&quot;: null,&#xd;
+  &quot;service_level&quot;: null,&#xd;
+  &quot;ship_via&quot;: null,&#xd;
+  &quot;ship_to_attention&quot;: null,&#xd;
+  &quot;sat_delivery_flag&quot;: null,&#xd;
+  &quot;registered_mail_flag&quot;: null,&#xd;
+  &quot;restricted_mail_flag&quot;: null,&#xd;
+  &quot;cod_flag&quot;: null,&#xd;
+  &quot;cod_pay_type&quot;: null,&#xd;
+  &quot;cod_option&quot;: null,&#xd;
+  &quot;insurance_flag&quot;: null,&#xd;
+  &quot;bill_frght_to_attention&quot;: null,&#xd;
+  &quot;ship_to_residential_flag&quot;: null,&#xd;
+  &quot;carrier_mode&quot;: null,&#xd;
+  &quot;earliest_appt_time&quot;: &quot;16:00&quot;,&#xd;
+  &quot;latest_appt_time&quot;: &quot;23:59&quot;,&#xd;
+  &quot;closure_date&quot;: null,&#xd;
+  &quot;order_details&quot;: [&#xd;
+    {&#xd;
+      &quot;client_code&quot;: &quot;Argos&quot;,&#xd;
+      &quot;line_number&quot;: &quot;1&quot;,&#xd;
+      &quot;item_number&quot;: &quot;rdcdcsbh&quot;,&#xd;
+      &quot;item_description&quot;: null,&#xd;
+      &quot;cust_part&quot;: null,&#xd;
+      &quot;lot_number&quot;: null,&#xd;
+      &quot;qty&quot;: 1,&#xd;
+      &quot;status&quot;: null,&#xd;
+      &quot;unit_weight&quot;: null,&#xd;
+      &quot;unit_volume&quot;: null,&#xd;
+      &quot;extended_weight&quot;: null,&#xd;
+      &quot;extended_volume&quot;: null,&#xd;
+      &quot;haz_material&quot;: null,&#xd;
+      &quot;bol_class&quot;: null,&#xd;
+      &quot;bol_code&quot;: null,&#xd;
+      &quot;order_uom&quot;: &quot;EA&quot;,&#xd;
+      &quot;host_wave_id&quot;: null,&#xd;
+      &quot;temp_link_id&quot;: null,&#xd;
+      &quot;unit_insurance_amount&quot;: null,&#xd;
+      &quot;gen_attribute_value1&quot;: null,&#xd;
+      &quot;gen_attribute_value2&quot;: null,&#xd;
+      &quot;gen_attribute_value3&quot;: null,&#xd;
+      &quot;gen_attribute_value4&quot;: null,&#xd;
+      &quot;gen_attribute_value5&quot;: null,&#xd;
+      &quot;gen_attribute_value6&quot;: null,&#xd;
+      &quot;gen_attribute_value7&quot;: null,&#xd;
+      &quot;gen_attribute_value8&quot;: null,&#xd;
+      &quot;gen_attribute_value9&quot;: null,&#xd;
+      &quot;gen_attribute_value10&quot;: null,&#xd;
+      &quot;gen_attribute_value11&quot;: null,&#xd;
+      &quot;hold_reason_id&quot;: null,&#xd;
+      &quot;processing_satt_id&quot;: null&#xd;
+    }&#xd;
+  ]&#xd;
+}&#xd;
+}&#xd;
+},&#xd;
+&quot;method&quot;: &quot;usp_js_import_po&quot;&#xd;
+}&#xd;
+&#xd;
+</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">ksc-iis-tst.stbc2.jstest2.net</stringProp>
+          <stringProp name="HTTPSampler.port">8080</stringProp>
+          <stringProp name="HTTPSampler.protocol">http</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/api/warehouseadvantage</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">AuthenticationTicket</stringProp>
+                <stringProp name="Header.value">${AuthenticationTicket}</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
+            <stringProp name="delimiter"></stringProp>
+            <stringProp name="fileEncoding"></stringProp>
+            <stringProp name="filename">C:/Users/Bishnupriya.Nanda/OneDrive - Sainsbury&apos;s Supermarkets Ltd/Documents/orders.csv</stringProp>
+            <boolProp name="ignoreFirstLine">false</boolProp>
+            <boolProp name="quotedData">false</boolProp>
+            <boolProp name="recycle">true</boolProp>
+            <stringProp name="shareMode">shareMode.all</stringProp>
+            <boolProp name="stopThread">false</boolProp>
+            <stringProp name="variableNames">Orders</stringProp>
+          </CSVDataSet>
+          <hashTree/>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+            <stringProp name="ConstantTimer.delay">5000</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="warehouseAdvantage-Order import_TestSample" enabled="false">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&quot;params&quot;:{&quot;json&quot;:{&quot;orders&quot;:{&quot;processing_code&quot;:&quot;UPDATE&quot;,&quot;wh_id&quot;:&quot;p42jte&quot;,&quot;order_number&quot;:&quot;001451&quot;,&quot;display_order_number&quot;:&quot;3000003459&quot;,&quot;host_group_id&quot;:&quot;TTD_0003_888d51204f4d554154325032202020204c6def9900003439_1&quot;,&quot;store_order_number&quot;:&quot;001121&quot;,&quot;carrier&quot;:&quot;Sainsburys&quot;,&quot;order_details&quot;:[{&quot;client_code&quot;:&quot;ARGOS&quot;,&quot;item_number&quot;:&quot;s0yj8q9e-1&quot;,&quot;qty&quot;:5.0,&quot;order_uom&quot;:&quot;EA&quot;}]}}},&quot;method&quot;:&quot;usp_js_import_order&quot;}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">iissrv0lfcsyst.kscnp-nprd.iaas.js-alz.com</stringProp>
+          <stringProp name="HTTPSampler.port">8080</stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/api/warehouseadvantage</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">AuthenticationTicket</stringProp>
+                <stringProp name="Header.value">${AuthenticationTicket}</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
+            <stringProp name="delimiter"></stringProp>
+            <stringProp name="fileEncoding"></stringProp>
+            <stringProp name="filename">C:/Ajith/TestData/Order_Import_picking.csv</stringProp>
+            <boolProp name="ignoreFirstLine">true</boolProp>
+            <boolProp name="quotedData">false</boolProp>
+            <boolProp name="recycle">false</boolProp>
+            <stringProp name="shareMode">shareMode.all</stringProp>
+            <boolProp name="stopThread">true</boolProp>
+            <stringProp name="variableNames"></stringProp>
+          </CSVDataSet>
+          <hashTree/>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+            <stringProp name="ConstantTimer.delay">5000</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="-1149187101">SUCCESS</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">2</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="warehouseAdvantage-Order import_picking" enabled="false">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+	&quot;params&quot;: {&#xd;
+		&quot;json&quot;: {&#xd;
+			&quot;orders&quot;: {&#xd;
+				&quot;processing_code&quot;: &quot;NEW&quot;,&#xd;
+				&quot;wh_id&quot;: &quot;2923&quot;,&#xd;
+				&quot;order_number&quot;: &quot;${OrderNum}&quot;,&#xd;
+				&quot;display_order_number&quot;: &quot;${DisplayNum}&quot;,&#xd;
+				&quot;host_group_id&quot;: &quot;${host_id}&quot;,&#xd;
+				&quot;store_order_number&quot;: &quot;${Store_OrderNum}&quot;,&#xd;
+				&quot;order_type&quot;: &quot;Collection Point&quot;,&#xd;
+				&quot;customer_code&quot;: &quot;202108031120081009947691&quot;,&#xd;
+				&quot;carrier&quot;: &quot;Sainsburys&quot;,&#xd;
+				&quot;order_date&quot;: &quot;2022-03-25 17:00&quot;,&#xd;
+				&quot;arrive_date&quot;: &quot;2022-03-25 18:00&quot;,&#xd;
+				&quot;promised_date&quot;: &quot;2022-03-26 18:00&quot;,&#xd;
+				&quot;ship_to_code&quot;: &quot;5065&quot;,&#xd;
+				&quot;ship_to_zip&quot;: &quot;&quot;,&#xd;
+				&quot;earliest_ship_date&quot;: &quot;2022-03-25 18:00&quot;,&#xd;
+				&quot;latest_ship_date&quot;: &quot;2022-03-25 19:00&quot;,&#xd;
+				&quot;earliest_delivery_date&quot;: &quot;2022-03-25&quot;,&#xd;
+				&quot;latest_delivery_date&quot;: &quot;2022-03-25&quot;,&#xd;
+				&quot;earliest_appt_time&quot;: &quot;18:00&quot;,&#xd;
+				&quot;latest_appt_time&quot;: &quot;19:00&quot;,&#xd;
+				&quot;order_details&quot;: [&#xd;
+					{&#xd;
+						&quot;client_code&quot;: &quot;Argos&quot;,&#xd;
+						&quot;line_number&quot;: &quot;1&quot;,&#xd;
+						&quot;item_number&quot;: &quot;${ItemNum}&quot;,&#xd;
+						&quot;qty&quot;: 5,&#xd;
+						&quot;order_uom&quot;: &quot;EA&quot;&#xd;
+					}&#xd;
+				]&#xd;
+			}&#xd;
+		}&#xd;
+	},&#xd;
+	&quot;method&quot;: &quot;usp_js_import_order&quot;&#xd;
+	}&#xd;
+</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">iissrv0lfcsyst.kscnp-nprd.iaas.js-alz.com</stringProp>
+          <stringProp name="HTTPSampler.port">8080</stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/api/warehouseadvantage</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">AuthenticationTicket</stringProp>
+                <stringProp name="Header.value">${AuthenticationTicket}</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
+            <stringProp name="delimiter"></stringProp>
+            <stringProp name="fileEncoding"></stringProp>
+            <stringProp name="filename">C:/Ajith/TestData/Order_Import_picking.csv</stringProp>
+            <boolProp name="ignoreFirstLine">true</boolProp>
+            <boolProp name="quotedData">false</boolProp>
+            <boolProp name="recycle">false</boolProp>
+            <stringProp name="shareMode">shareMode.all</stringProp>
+            <boolProp name="stopThread">true</boolProp>
+            <stringProp name="variableNames"></stringProp>
+          </CSVDataSet>
+          <hashTree/>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+            <stringProp name="ConstantTimer.delay">5000</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="-1149187101">SUCCESS</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">2</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Barten_Label Printing" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+&quot;printer&quot;: &quot;PDF&quot;,&#xd;
+&quot;copies&quot;: 1,&#xd;
+&quot;template&quot;: &quot;fast_track_delivery_package_label&quot;,&#xd;
+&quot;pages&quot;:&#xd;
+[&#xd;
+{&#xd;
+&quot;hu_id&quot;: &quot;LP200&quot;,&#xd;
+&quot;order_reference&quot;: &quot;ABC12&quot;,&#xd;
+&quot;line_number&quot;: &quot;0003&quot;,&#xd;
+&quot;unit_id&quot;: &quot;001&quot;,&#xd;
+&quot;item_number&quot;: &quot;7572753-12&quot;,&#xd;
+&quot;parcel_number&quot;: &quot;1 of 2&quot;,&#xd;
+&quot;pick_time&quot;: &quot;Thu 03-Mar-2022 12:00&quot;,&#xd;
+&quot;delivery_time&quot;: &quot;Thu 03-March-2022 12:00 to 12:00&quot;,&#xd;
+&quot;note_1&quot;: &quot;For information on your legal rights, please visit our customer services section on www.argos.co.uk&quot;,&#xd;
+&quot;user_id&quot;: &quot;JSITMIEV&quot;,&#xd;
+&quot;dlv_name&quot;: &quot;Mike Everson&quot;,&#xd;
+&quot;dlv_address_1&quot;: &quot;Ansty Park, Unit 1&quot;,&#xd;
+&quot;dlv_address_2&quot;: &quot;Draken Drive&quot;,&#xd;
+&quot;dlv_town&quot;: &quot;Coventry&quot;,&#xd;
+&quot;dlv_county&quot;: &quot;Warwickshire&quot;,&#xd;
+&quot;dlv_postcode&quot;: &quot;CV7 9RD&quot;&#xd;
+}&#xd;
+]&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">appsrv1dev1bar.kscnp-nprd.iaas.js-alz.com</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/Bartender/API/IntegrationServicePassthrough?targetURL=/Integration/LabelWebServiceIntegration_JSON_Multi_Page/Execute</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">AuthenticationTicket</stringProp>
+                <stringProp name="Header.value">${AuthenticationTicket}</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
+            <stringProp name="delimiter"></stringProp>
+            <stringProp name="fileEncoding"></stringProp>
+            <stringProp name="filename">C:/Ajith/TestData/Order_Import_picking.csv</stringProp>
+            <boolProp name="ignoreFirstLine">true</boolProp>
+            <boolProp name="quotedData">false</boolProp>
+            <boolProp name="recycle">false</boolProp>
+            <stringProp name="shareMode">shareMode.all</stringProp>
+            <boolProp name="stopThread">true</boolProp>
+            <stringProp name="variableNames"></stringProp>
+          </CSVDataSet>
+          <hashTree/>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+            <stringProp name="ConstantTimer.delay">5000</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="-1149187101">SUCCESS</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">2</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="Aggregate Report" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="VNP_API" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Items" enabled="true">
+          <stringProp name="filename">C:/Ajith/TestData/Item_List_OrderImport.csv</stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <stringProp name="variableNames">ItemNum</stringProp>
+          <boolProp name="ignoreFirstLine">true</boolProp>
+          <stringProp name="delimiter">,</stringProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Picking_CP" enabled="true">
+          <stringProp name="delimiter"></stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <stringProp name="filename">C:/Ajith/TestData/CP_Picking.csv</stringProp>
+          <boolProp name="ignoreFirstLine">true</boolProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">false</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+          <boolProp name="stopThread">true</boolProp>
+          <stringProp name="variableNames">cp_host_id,cp_OrderNum,cp_DisplayNum,cp_Store_OrderNum </stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Picking_CNC" enabled="true">
+          <stringProp name="delimiter"></stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <stringProp name="filename">C:/Ajith/TestData/CNC_Picking.csv</stringProp>
+          <boolProp name="ignoreFirstLine">true</boolProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">false</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+          <boolProp name="stopThread">true</boolProp>
+          <stringProp name="variableNames">cnc_host_id,cnc_OrderNum,cnc_DisplayNum,cnc_Store_OrderNum </stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Picking_FTD" enabled="false">
+          <stringProp name="delimiter"></stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <stringProp name="filename">C:/Ajith/TestData/FTD_Picking.csv</stringProp>
+          <boolProp name="ignoreFirstLine">true</boolProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">false</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+          <boolProp name="stopThread">true</boolProp>
+          <stringProp name="variableNames">ftd_host_id,ftd_OrderNum,ftd_DisplayNum </stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Logon" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+  &quot;applicationId&quot;: &quot;HighJump One Platform&quot;,&#xd;
+  &quot;tenant&quot;: &quot;&quot;,&#xd;
+  &quot;userLogOnName&quot;: &quot;JSON2&quot;,&#xd;
+  &quot;userPassword&quot;: &quot;TESTABC&quot;,&#xd;
+  &quot;connectionType&quot;: &quot;Integration&quot;&#xd;
+  &#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">iislbha.kscnp-nprd.iaas.js-alz.com</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/odata/LogOn</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
+            <stringProp name="JSONPostProcessor.referenceNames">AuthenticationTicket</stringProp>
+            <stringProp name="JSONPostProcessor.jsonPathExprs">$..SerializedAuthenticationTicket</stringProp>
+            <stringProp name="JSONPostProcessor.match_numbers">0</stringProp>
+          </JSONPostProcessor>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CP_Order" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+	&quot;params&quot;: {&#xd;
+		&quot;json&quot;: {&#xd;
+			&quot;orders&quot;: {&#xd;
+				&quot;processing_code&quot;: &quot;NEW&quot;,&#xd;
+				&quot;wh_id&quot;: &quot;esek33&quot;,&#xd;
+				&quot;order_number&quot;: &quot;${cp_OrderNum}&quot;,&#xd;
+				&quot;display_order_number&quot;: &quot;${cp_DisplayNum}&quot;,&#xd;
+				&quot;host_group_id&quot;: &quot;${cp_host_id}&quot;,&#xd;
+				&quot;store_order_number&quot;: &quot;${cp_Store_OrderNum}&quot;,&#xd;
+				&quot;order_type&quot;: &quot;CUSTOMER_CONVENIENCE&quot;,&#xd;
+				&quot;customer_code&quot;: &quot;202207121147011795023720&quot;,&#xd;
+				&quot;carrier&quot;: &quot;Sainsburys&quot;,&#xd;
+				&quot;order_date&quot;: &quot;${__time(yyy-MM-dd HH:mm,)}&quot;,&#xd;
+				&quot;arrive_date&quot;: &quot;${__time(yyy-MM-dd HH:mm,)}&quot;,				&#xd;
+				&quot;promised_date&quot;: &quot;${__timeShift(yyyy-MM-dd HH:mm,,PT3H,,)}&quot;,				&#xd;
+				&quot;ship_to_code&quot;: &quot;17f5pm&quot;,&#xd;
+				&quot;earliest_ship_date&quot;: &quot;${__timeShift(yyy-MM-dd HH:mm,,PT2H,,)}&quot;,&#xd;
+				&quot;latest_ship_date&quot;: &quot;${__timeShift(yyy-MM-dd HH:mm,,PT3H,,)}&quot;,				&#xd;
+				&quot;earliest_appt_time&quot;: &quot;18:00&quot;,&#xd;
+				&quot;latest_appt_time&quot;: &quot;19:00&quot;,&#xd;
+				&quot;order_details&quot;: [&#xd;
+					{&#xd;
+						&quot;client_code&quot;: &quot;ARGOS&quot;,&#xd;
+						&quot;line_number&quot;: &quot;1&quot;,&#xd;
+						&quot;item_number&quot;: &quot;${ItemNum}&quot;,&#xd;
+						&quot;qty&quot;: 1,&#xd;
+						&quot;order_uom&quot;: &quot;EA&quot;&#xd;
+					}&#xd;
+				]&#xd;
+			}&#xd;
+		}&#xd;
+	},&#xd;
+	&quot;method&quot;: &quot;usp_js_import_order&quot;&#xd;
+	}&#xd;
+</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">iislbha.kscnp-nprd.iaas.js-alz.com</stringProp>
+          <stringProp name="HTTPSampler.port">8080</stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/api/warehouseadvantage</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">AuthenticationTicket</stringProp>
+                <stringProp name="Header.value">${AuthenticationTicket}</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+            <stringProp name="ConstantTimer.delay">5000</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="-1149187101">SUCCESS</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">2</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="C&amp;C_Order" enabled="false">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+    &quot;params&quot;: {&#xd;
+        &quot;json&quot;: {&#xd;
+            &quot;orders&quot;: {&#xd;
+                &quot;processing_code&quot;: &quot;NEW&quot;,&#xd;
+                &quot;wh_id&quot;: &quot;esek33&quot;,&#xd;
+                &quot;order_number&quot;: &quot;${cnc_OrderNum}&quot;,&#xd;
+                &quot;display_order_number&quot;: &quot;${cnc_DisplayNum}&quot;,&#xd;
+                &quot;host_group_id&quot;: &quot;${cnc_host_id}&quot;,&#xd;
+                &quot;store_order_number&quot;: &quot;${cnc_Store_OrderNum}&quot;,&#xd;
+                &quot;order_type&quot;: &quot;CLICK_AND_COLLECT&quot;,&#xd;
+                &quot;customer_code&quot;: &quot;iu6wx5&quot;,&#xd;
+                &quot;carrier&quot;: &quot;Sainsburys&quot;,&#xd;
+                &quot;order_date&quot;: &quot;${__time(yyy-MM-dd HH:mm,)}&quot;,&#xd;
+                &quot;arrive_date&quot;: &quot;${__time(yyy-MM-dd HH:mm,)}&quot;,&#xd;
+                &quot;promised_date&quot;: &quot;${__timeShift(yyyy-MM-dd HH:mm,,PT3H,,)}&quot;,&#xd;
+                &quot;ship_to_code&quot;: &quot;iu6wx5&quot;,&#xd;
+                &quot;earliest_ship_date&quot;: &quot;${__timeShift(yyy-MM-dd HH:mm,,PT2H,,)}&quot;,&#xd;
+                &quot;latest_ship_date&quot;: &quot;${__timeShift(yyy-MM-dd HH:mm,,PT3H,,)}&quot;,&#xd;
+                &quot;earliest_appt_time&quot;: &quot;13:00&quot;,&#xd;
+                &quot;latest_appt_time&quot;: &quot;14:00&quot;,&#xd;
+               &#xd;
+                &quot;order_details&quot;: [&#xd;
+                    {&#xd;
+                        &quot;client_code&quot;: &quot;ARGOS&quot;,&#xd;
+                        &quot;line_number&quot;: &quot;1&quot;,&#xd;
+                        &quot;item_number&quot;: &quot;${ItemNum}&quot;,&#xd;
+                         &quot;qty&quot;: 1,&#xd;
+                        &quot;order_uom&quot;: &quot;EA&quot;&#xd;
+                    }&#xd;
+                ]&#xd;
+            }&#xd;
+        }&#xd;
+    },&#xd;
+    &quot;method&quot;: &quot;usp_js_import_order&quot;&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">iislbha.kscnp-nprd.iaas.js-alz.com</stringProp>
+          <stringProp name="HTTPSampler.port">8080</stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/api/warehouseadvantage</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">AuthenticationTicket</stringProp>
+                <stringProp name="Header.value">${AuthenticationTicket}</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+            <stringProp name="ConstantTimer.delay">5000</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="-1149187101">SUCCESS</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">2</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="FTD_Orders" enabled="false">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+	&quot;params&quot;: {&#xd;
+		&quot;json&quot;: {&#xd;
+            &quot;orders&quot;: {&#xd;
+                &quot;processing_code&quot;: &quot;NEW&quot;,&#xd;
+                &quot;wh_id&quot;: &quot;esek33&quot;,&#xd;
+                &quot;order_number&quot;: &quot;${ftd_OrderNum}&quot;,&#xd;
+                &quot;display_order_number&quot;: &quot;${ftd_DisplayNum}&quot;,&#xd;
+                &quot;host_group_id&quot;: &quot;${ftd_host_id}&quot;,&#xd;
+                &quot;store_order_number&quot;: &quot;&quot;,&#xd;
+                &quot;order_type&quot;: &quot;HOME_DELIVERY&quot;,&#xd;
+                &quot;customer_code&quot;: &quot;202207121147011795023720&quot;,&#xd;
+                &quot;carrier&quot;: &quot;Sainsburys&quot;,&#xd;
+                &quot;order_date&quot;: &quot;${__time(yyy-MM-dd HH:mm,)}&quot;,&#xd;
+                &quot;arrive_date&quot;: &quot;${__time(yyy-MM-dd HH:mm,)}&quot;,&#xd;
+                &quot;promised_date&quot;: &quot;${__timeShift(yyyy-MM-dd HH:mm,,PT3H,,)}&quot;,&#xd;
+                &quot;ship_to_zip&quot;: &quot;PH3 1BJ&quot;,&#xd;
+                &quot;earliest_ship_date&quot;: &quot;${__timeShift(yyy-MM-dd HH:mm,,PT2H,,)}&quot;,&#xd;
+                &quot;latest_ship_date&quot;: &quot;${__timeShift(yyy-MM-dd HH:mm,,PT3H,,)}&quot;,&#xd;
+                &quot;earliest_appt_time&quot;: &quot;12:00&quot;,&#xd;
+                &quot;latest_appt_time&quot;: &quot;13:00&quot;,&#xd;
+                &quot;order_details&quot;: [&#xd;
+                    {&#xd;
+                        &quot;client_code&quot;: &quot;ARGOS&quot;,&#xd;
+                        &quot;line_number&quot;: &quot;1&quot;,&#xd;
+                        &quot;item_number&quot;: &quot;${ItemNum}&quot;,&#xd;
+                        &quot;qty&quot;: 1,&#xd;
+                        &quot;order_uom&quot;: &quot;EA&quot;&#xd;
+                    }&#xd;
+                ]&#xd;
+            }&#xd;
+		}&#xd;
+	},&#xd;
+	&quot;method&quot;: &quot;usp_js_import_order&quot;&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">iislbha.kscnp-nprd.iaas.js-alz.com</stringProp>
+          <stringProp name="HTTPSampler.port">8080</stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/api/warehouseadvantage</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">AuthenticationTicket</stringProp>
+                <stringProp name="Header.value">${AuthenticationTicket}</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+            <stringProp name="ConstantTimer.delay">5000</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="-1149187101">SUCCESS</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">2</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Order_Update" enabled="false">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+&quot;params&quot;: {&#xd;
+&quot;json&quot;:&#xd;
+{&#xd;
+  &quot;order_detail_update&quot;: {&#xd;
+    &quot;processing_code&quot;: &quot;UPDATE&quot;,&#xd;
+    &quot;wh_id&quot;: &quot;esek33&quot;,&#xd;
+    &quot;client_code&quot;: &quot;ARGOS&quot;,&#xd;
+    &quot;order_number&quot;: &quot;AJON177029&quot;,&#xd;
+    &quot;display_order_number&quot;: &quot;177029&quot;,&#xd;
+    &quot;host_group_id&quot;: &quot;AJRF8438-6Z2D-4494-2M8J-YU2029&quot;,&#xd;
+    &quot;store_order_number&quot;: &quot;&quot;,&#xd;
+    &quot;carrier&quot;: &quot;Sainsburys&quot;,&#xd;
+    &quot;line_number&quot;: &quot;1&quot;,&#xd;
+    &quot;item_number&quot;: &quot;p06aqvnj-1&quot;,&#xd;
+    &quot;qty&quot;: 1,&#xd;
+    &quot;order_uom&quot;: &quot;EA&quot;&#xd;
+  }&#xd;
+}&#xd;
+},&#xd;
+&quot;method&quot;: &quot;usp_js_import_update_order_details&quot;&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">iislbha.kscnp-nprd.iaas.js-alz.com</stringProp>
+          <stringProp name="HTTPSampler.port">8080</stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/api/warehouseadvantage</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">AuthenticationTicket</stringProp>
+                <stringProp name="Header.value">${AuthenticationTicket}</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+            <stringProp name="ConstantTimer.delay">5000</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="-1149187101">SUCCESS</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">2</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <RandomVariableConfig guiclass="TestBeanGUI" testclass="RandomVariableConfig" testname="Random Variable" enabled="true">
+            <stringProp name="maximumValue">9999</stringProp>
+            <stringProp name="minimumValue">1000</stringProp>
+            <stringProp name="outputFormat">ORN0000</stringProp>
+            <boolProp name="perThread">false</boolProp>
+            <stringProp name="randomSeed"></stringProp>
+            <stringProp name="variableName">Ordernum1</stringProp>
+          </RandomVariableConfig>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Order_Cancel" enabled="false">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value"> {&#xd;
+    &quot;params&quot;: {&#xd;
+    &quot;json&quot;:{&#xd;
+    &quot;order_detail_update&quot;: {&#xd;
+        &quot;processing_code&quot;: &quot;UPDATE&quot;,&#xd;
+        &quot;wh_id&quot;: &quot;esek33&quot;,&#xd;
+        &quot;client_code&quot;: &quot;ARGOS&quot;,&#xd;
+        &quot;order_number&quot;: &quot;AJON177046&quot;,&#xd;
+        &quot;display_order_number&quot;: &quot;177046&quot;,&#xd;
+        &quot;status&quot;: &quot;CANCELLED&quot;,&#xd;
+        &quot;host_group_id&quot;: &quot;AJRF8438-6Z2D-4414-2M8J-YU2046&quot;,&#xd;
+        &quot;store_order_number&quot;: &quot;&quot;,&#xd;
+        &quot;carrier&quot;: &quot;Sainsburys&quot;,&#xd;
+        &quot;line_number&quot;: &quot;1&quot;,&#xd;
+        &quot;item_number&quot;: &quot;p06aqvnj-1&quot;,&#xd;
+        &quot;qty&quot;: 0,&#xd;
+        &quot;order_uom&quot;: &quot;EA&quot;&#xd;
+    }&#xd;
+}&#xd;
+    },&#xd;
+        &quot;method&quot;: &quot;usp_js_import_update_order_details&quot;&#xd;
+    }</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">iislbha.kscnp-nprd.iaas.js-alz.com</stringProp>
+          <stringProp name="HTTPSampler.port">8080</stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/api/warehouseadvantage</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">AuthenticationTicket</stringProp>
+                <stringProp name="Header.value">${AuthenticationTicket}</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+            <stringProp name="ConstantTimer.delay">5000</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="-1149187101">SUCCESS</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">2</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <RandomVariableConfig guiclass="TestBeanGUI" testclass="RandomVariableConfig" testname="Random Variable" enabled="true">
+            <stringProp name="maximumValue">9999</stringProp>
+            <stringProp name="minimumValue">1000</stringProp>
+            <stringProp name="outputFormat">ORN0000</stringProp>
+            <boolProp name="perThread">false</boolProp>
+            <stringProp name="randomSeed"></stringProp>
+            <stringProp name="variableName">Ordernum1</stringProp>
+          </RandomVariableConfig>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Order_Update_Debug" enabled="false">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+  &quot;params&quot;: {&#xd;
+    &quot;json&quot;: {&#xd;
+      &quot;order_detail_update&quot;: {&#xd;
+        &quot;processing_code&quot;: &quot;UPDATE&quot;,&#xd;
+        &quot;wh_id&quot;: &quot;esek33&quot;,&#xd;
+        &quot;client_code&quot;: &quot;ARGOS&quot;,&#xd;
+        &quot;order_number&quot;: &quot;118610&quot;,&#xd;
+        &quot;display_order_number&quot;: &quot;6123006432&quot;,&#xd;
+        &quot;host_group_id&quot;: &quot;KOU_MQPT1L1_0006_414d5120445732494e315431202020208312ab7220184c08_1&quot;,&#xd;
+        &quot;store_order_number&quot;: &quot;&quot;,&#xd;
+        &quot;carrier&quot;: &quot;Sainsburys&quot;,&#xd;
+        &quot;item_number&quot;: &quot;s1fr48c6-1&quot;,&#xd;
+        &quot;qty&quot;: 1,&#xd;
+        &quot;order_uom&quot;: &quot;EA&quot;&#xd;
+      }&#xd;
+    }&#xd;
+  },&#xd;
+  &quot;method&quot;: &quot;usp_js_import_update_order_details&quot;&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">iislbha.kscnp-nprd.iaas.js-alz.com</stringProp>
+          <stringProp name="HTTPSampler.port">8080</stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/api/warehouseadvantage</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">AuthenticationTicket</stringProp>
+                <stringProp name="Header.value">${AuthenticationTicket}</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+            <stringProp name="ConstantTimer.delay">5000</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="-1149187101">SUCCESS</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">2</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <RandomVariableConfig guiclass="TestBeanGUI" testclass="RandomVariableConfig" testname="Random Variable" enabled="true">
+            <stringProp name="maximumValue">9999</stringProp>
+            <stringProp name="minimumValue">1000</stringProp>
+            <stringProp name="outputFormat">ORN0000</stringProp>
+            <boolProp name="perThread">false</boolProp>
+            <stringProp name="randomSeed"></stringProp>
+            <stringProp name="variableName">Ordernum1</stringProp>
+          </RandomVariableConfig>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="PO " enabled="false">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+&quot;params&quot;: {&#xd;
+&quot;json&quot;: {&#xd;
+&quot;po_master&quot;: {&#xd;
+&quot;transaction_code&quot;: &quot;NEW&quot;,&#xd;
+&quot;host_group_id&quot;: &quot;tyu23a12w-2d78ab-47bw3-91az8-8e91a7c6f78k&quot;,&#xd;
+&quot;wh_id&quot;: &quot;esek33&quot;,&#xd;
+&quot;client_code&quot;: &quot;ARGOS&quot;,&#xd;
+&quot;po_number&quot;: &quot;LSP-Argos-2239202210&quot;,&#xd;
+&quot;display_po_number&quot;: &quot;LSP-Argos-2239202210&quot;,&#xd;
+&quot;po_type&quot;: &quot;Purchase Orders&quot;,&#xd;
+&quot;vendor_code&quot;: &quot;zs6zb3&quot;,&#xd;
+&quot;status&quot;: &quot;O&quot;,&#xd;
+&quot;po_detail&quot;: [&#xd;
+{&#xd;
+&quot;wh_id&quot;: &quot;esek33&quot;,&#xd;
+&quot;client_code&quot;: &quot;ARGOS&quot;,&#xd;
+&quot;po_number&quot;: &quot;LSP-Argos-2139202290&quot;,&#xd;
+&quot;display_po_number&quot;: &quot;LSP-Argos-2139202290&quot;,&#xd;
+&quot;line_number&quot;: &quot;2&quot;,&#xd;
+&quot;item_number&quot;: &quot;pp8zsbet-1&quot;,&#xd;
+&quot;display_item_number&quot;: &quot;1148583&quot;,&#xd;
+&quot;quantity&quot;: 10,&#xd;
+&quot;vendor_item_number&quot;: &quot;8067&quot;,&#xd;
+&quot;delivery_date&quot;: &quot;2021-06-13&quot;,&#xd;
+&quot;order_uom&quot;: &quot;EA&quot;&#xd;
+}&#xd;
+]&#xd;
+}&#xd;
+}&#xd;
+},&#xd;
+&quot;method&quot;: &quot;usp_js_import_po&quot;&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">iislbha.kscnp-nprd.iaas.js-alz.com</stringProp>
+          <stringProp name="HTTPSampler.port">8080</stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/api/warehouseadvantage</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">AuthenticationTicket</stringProp>
+                <stringProp name="Header.value">${AuthenticationTicket}</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+            <stringProp name="ConstantTimer.delay">5000</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="-1149187101">SUCCESS</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">2</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <RandomVariableConfig guiclass="TestBeanGUI" testclass="RandomVariableConfig" testname="Random Variable" enabled="true">
+            <stringProp name="maximumValue">9999</stringProp>
+            <stringProp name="minimumValue">1000</stringProp>
+            <stringProp name="outputFormat">ORN0000</stringProp>
+            <boolProp name="perThread">false</boolProp>
+            <stringProp name="randomSeed"></stringProp>
+            <stringProp name="variableName">Ordernum1</stringProp>
+          </RandomVariableConfig>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="InventorySnapshot_Retrigger" enabled="false">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+    &quot;params&quot;: {&#xd;
+        &quot;json&quot;: {&#xd;
+            &quot;transaction_stop_acknowledgement&quot;: {&#xd;
+                &quot;host_group_id&quot;: &quot;90eb1191-4d9e-2504-98af-228166213b3e&quot;,&#xd;
+                &quot;wh_id&quot;:&quot;esek33&quot;,&#xd;
+                &quot;transaction_status&quot;:&quot;Initiate_Transaction&quot;&#xd;
+            }&#xd;
+        }&#xd;
+    },&#xd;
+    &quot;method&quot;: &quot;usp_js_import_initiate_outbound&quot;&#xd;
+}&#xd;
+</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">iislbha.kscnp-nprd.iaas.js-alz.com</stringProp>
+          <stringProp name="HTTPSampler.port">8080</stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/api/warehouseadvantage</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">AuthenticationTicket</stringProp>
+                <stringProp name="Header.value">${AuthenticationTicket}</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+            <stringProp name="ConstantTimer.delay">5000</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="-1149187101">SUCCESS</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">2</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <RandomVariableConfig guiclass="TestBeanGUI" testclass="RandomVariableConfig" testname="Random Variable" enabled="true">
+            <stringProp name="maximumValue">9999</stringProp>
+            <stringProp name="minimumValue">1000</stringProp>
+            <stringProp name="outputFormat">ORN0000</stringProp>
+            <boolProp name="perThread">false</boolProp>
+            <stringProp name="randomSeed"></stringProp>
+            <stringProp name="variableName">Ordernum1</stringProp>
+          </RandomVariableConfig>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Inv_Adjust_ExportMessage" enabled="false">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+  &quot;params&quot;: {&#xd;
+    &quot;json&quot;: {&#xd;
+      &quot;inventory_adjust&quot;: {&#xd;
+        &quot;wh_id&quot;: &quot;esek33&quot;,&#xd;
+        &quot;host_group_id&quot;: &quot;DFDD4DF9-B505-4A29-B927-58FCF46FA160&quot;,&#xd;
+        &quot;record_create_date&quot;: &quot;2022-08-01T12:36:35.403&quot;,&#xd;
+        &quot;client_code&quot;: &quot;ARGOS&quot;,&#xd;
+        &quot;item_number&quot;: &quot;wm33dvhg-1&quot;,&#xd;
+        &quot;uom&quot;: &quot;EA&quot;,&#xd;
+        &quot;user_id&quot;: &quot;WT_12&quot;,&#xd;
+        &quot;transaction_code&quot;: &quot;851&quot;,&#xd;
+        &quot;expiration_date&quot;: &quot;&quot;,&#xd;
+        &quot;quantity_before&quot;: 2,&#xd;
+        &quot;quantity_after&quot;: &quot;2&quot;,&#xd;
+        &quot;quantity_change&quot;: &quot;0&quot;,&#xd;
+        &quot;inventory_status_before&quot;: &quot;AVAILABLE&quot;,&#xd;
+        &quot;inventory_status_after&quot;: &quot;AVAILABLE&quot;,&#xd;
+        &quot;reason_code&quot;: &quot;25&quot;&#xd;
+      }&#xd;
+    }&#xd;
+  },&#xd;
+  &quot;method&quot;: &quot;usp_js_export_inventory_adjust&quot;&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">iislbha.kscnp-nprd.iaas.js-alz.com</stringProp>
+          <stringProp name="HTTPSampler.port">8080</stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/api/warehouseadvantage</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">AuthenticationTicket</stringProp>
+                <stringProp name="Header.value">${AuthenticationTicket}</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+            <stringProp name="ConstantTimer.delay">5000</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="-1149187101">SUCCESS</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">2</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="false">
+          <stringProp name="ConstantTimer.delay">2000</stringProp>
+        </ConstantTimer>
+        <hashTree/>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>
