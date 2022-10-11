@@ -1,0 +1,25 @@
+# Starter pipeline
+- task: CmdLine@2
+  inputs:
+    script: |
+      cd C:\Users\localadmin\Downloads\apache-jmeter-5.4.3\apache-jmeter-5.4.3\bin
+      
+      jmeter.bat -n -t C:\work\r2\a\_jsainsburys_vnp\CCount123.jmx -l C:\work\r2\a\_jsainsburys_vnp\result_log\result02.jtl
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- script: echo Hello, world!
+  displayName: 'Run a one-line script'
+
+- script: |
+    echo Add other tasks to build, test, and deploy your project.
+    echo See https://aka.ms/yaml
+  displayName: 'Run a multi-line script'
