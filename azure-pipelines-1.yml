@@ -1,6 +1,6 @@
 # Starter pipeline
 
- job: Windows
+ #job: Windows
   pool:
     vmImage: 'windows-latest'
   steps:
