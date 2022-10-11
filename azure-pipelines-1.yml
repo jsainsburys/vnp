@@ -6,10 +6,10 @@
   steps:
   - script: echo hello from Windows
 
-trigger:
-- main
+  trigger:
+  - main
 
--task: CmdLine@2
+  -task: CmdLine@2
   inputs:
     script: |
       cd C:\Users\localadmin\Downloads\apache-jmeter-5.4.3\apache-jmeter-5.4.3\bin
