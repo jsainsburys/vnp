@@ -1,7 +1,8 @@
 # Starter pipeline
 
  #job: Windows
-  pool:
+ pool:
+  name: delthisapril2022
 
   steps:
   - script: echo hello from Windows
