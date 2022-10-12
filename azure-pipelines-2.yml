@@ -22,3 +22,4 @@ steps:
       
       jmeter.bat -n -t C:\work\r2\a\_jsainsburys_vnp\CCount123.jmx -l C:\work\r2\a\_jsainsburys_vnp\result_log\result02.jtl
     workingDirectory: '$(System.DefaultWorkingDirectory)/_jsainsburys_vnp'
+
