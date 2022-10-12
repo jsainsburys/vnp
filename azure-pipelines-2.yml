@@ -9,6 +9,12 @@ trigger:
 pool:
   name: delthisapril2022
 
+
+steps:
+- script: echo Hello, world!
+  displayName: 'Run a one-line script'
+
+
 - task: CmdLine@2
   inputs:
     script: |
@@ -16,11 +22,3 @@ pool:
       
       jmeter.bat -n -t C:\work\r2\a\_jsainsburys_vnp\CCount123.jmx -l C:\work\r2\a\_jsainsburys_vnp\result_log\result02.jtl
     workingDirectory: '$(System.DefaultWorkingDirectory)/_jsainsburys_vnp'
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
-
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
