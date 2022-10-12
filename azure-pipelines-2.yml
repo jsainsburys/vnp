@@ -9,6 +9,13 @@ trigger:
 pool:
   name: delthisapril2022
 
+- task: CmdLine@2
+  inputs:
+    script: |
+      cd C:\Users\localadmin\Downloads\apache-jmeter-5.4.3\apache-jmeter-5.4.3\bin
+      
+      jmeter.bat -n -t C:\work\r2\a\_jsainsburys_vnp\CCount123.jmx -l C:\work\r2\a\_jsainsburys_vnp\result_log\result02.jtl
+    workingDirectory: '$(System.DefaultWorkingDirectory)/_jsainsburys_vnp'
 steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
